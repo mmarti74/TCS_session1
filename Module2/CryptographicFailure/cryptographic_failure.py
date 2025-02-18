@@ -5,7 +5,7 @@ from cryptography.hazmat.backends import default_backend
 
 import os
 
-# Hardcoded key (16 bytes for AES-128)
+# Hardcoded key (16 bytes for AES-128) - delocalize this key into a vault secrets (azure key vault too)
 HARDCODED_KEY = b"1234567890abcdef"  # Hardcoded key is insecure
 
 salt = os.urandom(16)
