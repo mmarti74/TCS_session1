@@ -23,6 +23,15 @@ def user_dashboard():
 # Admin dashboard
 @app.route('/admin', methods=['GET'])
 def admin_dashboard():
+    
+    username = request.args.get('username')
+    if username not in users:
+        return jsonify({"error": "Not authorized!"}), 401
+    
+    user_role = users[username]["role"]
+    if (user_role != "admin"):
+        return jsonify({"error": "Not authorized!"}), 401
+    
     return jsonify({"message": "Welcome to the Admin Dashboard", "users": users}), 200
 
 if __name__ == '__main__':
